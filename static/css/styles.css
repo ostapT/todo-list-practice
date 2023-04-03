@@ -6,3 +6,16 @@ body {
     float: right;
     margin: 0 2px 0 2px;
 }
+
+.task-content {
+    font-weight: bold;
+}
+.completed-task {
+    font-weight: bold;
+    color: green;
+}
+
+.not-completed-task {
+    font-weight: bold;
+    color: red;
+}
