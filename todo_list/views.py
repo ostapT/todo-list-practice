@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -41,6 +41,7 @@ class TagCreateView(generic.CreateView):
     fields = "__all__"
     success_url = reverse_lazy("todo_list:tag-list")
 
+
 class TagUpdateView(generic.UpdateView):
     model = Tag
     fields = "__all__"
@@ -52,5 +53,9 @@ class TagDeleteView(generic.DeleteView):
     success_url = reverse_lazy("todo_list:tag-list")
 
 
-
-
+def set_task_status(request, pk=None):
+    if request.method == "POST" and pk is not None:
+        task = Task.objects.get(pk=pk)
+        task.complete = not task.complete
+        task.save()
+    return redirect("todo_list:task-list")

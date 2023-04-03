@@ -21,15 +21,17 @@
             <p class="deadline">Deadline: {{ task.deadline }}</p>
 
           {% endif %}
-          {% if task.complete %}
-            <a class="btn btn-secondary link-to-page" href="#">Undo</a>
-          {% else %}
-            <a class="btn btn-success link-to-page" href="#">Complete</a>
-          {% endif %}
+          <form action="{% url "todo_list:set-task-status" pk=task.id %}" method="post">
+            {% csrf_token %}
+            {% if task.complete %}
+              <button type="submit" class="btn btn-secondary link-to-page">Undo</button>
+            {% else %}
+              <button type="submit" class="btn btn-success link-to-page">Complete</button>
+            {% endif %}
           {% if task.tags.all %}
             Tags:
             {% for tag in task.tags.all %}
-              {{ tag.name }},
+              #{{ tag.name }}
             {% endfor %}
           {% else %}
             <p>There is no tags</p>
