@@ -2,6 +2,11 @@ body {
     margin-top: 20px;
 }
 
+.sidebar-style {
+    margin-top: 20px;
+    padding: 10px;
+}
+
 .link-to-page {
     float: right;
     margin: 0 2px 0 2px;
@@ -18,4 +23,8 @@ body {
 .not-completed-task {
     font-weight: bold;
     color: red;
+}
+
+.deadline {
+    color: darkred;
 }

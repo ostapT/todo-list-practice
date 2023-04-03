@@ -9,16 +9,16 @@
       {% for task in task_list %}
         <li class="list-group-item">
 
-          <h1><a href="{% url 'todo_list:task-detail' pk=task.id %}">{{ task.content }}</a></h1>
+          <h3><a href="{% url 'todo_list:task-detail' pk=task.id %}">{{ task.content }}</a></h3>
 
-          <h3>{% if task.complete %}
-              <h3 class="completed-task">Done</h3>
+          <h5>{% if task.complete %}
+              <h5 class="completed-task">Done</h5>
           {% else %}
-              <h3 class="not-completed-task">Not Done</h3>
-          {% endif %}</h3>
+              <h5 class="not-completed-task">Not Done</h5>
+          {% endif %}</h5>
           <p>Created at: {{ task.created_at }}</p>
           {% if task.deadline %}
-            <p>Deadline: {{ task.deadline }}</p>
+            <p class="deadline">Deadline: {{ task.deadline }}</p>
 
           {% endif %}
           {% if task.complete %}
@@ -26,10 +26,10 @@
           {% else %}
             <a class="btn btn-success link-to-page" href="#">Complete</a>
           {% endif %}
-          {% if tas.tags.all %}
-
+          {% if task.tags.all %}
+            Tags:
             {% for tag in task.tags.all %}
-              {{ tag.name }}
+              {{ tag.name }},
             {% endfor %}
           {% else %}
             <p>There is no tags</p>
